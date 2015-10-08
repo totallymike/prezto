@@ -10,4 +10,41 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+# export TERM=xterm-256color
+
 # Customize to your needs...
+
+unalias rm
+alias rm='nocorrect rm'
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+export PATH=/Users/mwestbom/.bin:$PATH
+alias figdb='fig -p designbook'
+
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+
+function trash() {
+  mv $@ $HOME/.Trash
+}
+
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=/Users/mwestbom/code/golang
+export PATH=$PATH:$GOPATH/bin
+
+source /usr/local/share/zsh/site-functions/_aws
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/mwestbom/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/mwestbom/google-cloud-sdk/completion.zsh.inc'
+
+# Teach gem-ripper-tags to use Emacs format
+export RIPPER_TAGS_EMACS=1
+
+eval "$(thefuck --alias)"
+eval $(docker-machine env development)

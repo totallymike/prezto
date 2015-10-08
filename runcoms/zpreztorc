@@ -15,6 +15,8 @@
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
+zstyle ':prezto:modules:ruby:rbenv' auto-switch 'yes'
+
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
 
@@ -31,7 +33,13 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'osx' \
+  'git' \
+  'history-substring-search' \
+  'ruby' \
   'completion' \
+  'fasd' \
+  'syntax-highlighting' \
   'prompt'
 
 #
@@ -85,7 +93,12 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+
+if [[ -z $EMACS ]]; then
+  zstyle ':prezto:module:prompt' theme 'sorin'
+else
+  zstyle ':prezto:module:prompt' theme 'peepcode'
+fi
 
 #
 # Ruby
@@ -130,6 +143,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 #   'command' 'bg=blue' \
 #   'function' 'bg=blue'
 
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 #
 # Terminal
 #
